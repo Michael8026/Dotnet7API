@@ -10,7 +10,7 @@ namespace Dotnet7API.Repos.Models;
 public partial class TblCustomer
 {
     [Key]
-    public int Code { get; set; }
+    public string Code { get; set; }
 
     [StringLength(50)]
     public string? Name { get; set; }

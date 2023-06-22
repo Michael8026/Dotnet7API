@@ -1,0 +1,142 @@
+2023-06-22 15:09:55.686 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-22 15:09:55.777 +01:00 [INF] Hosting environment: Development
+2023-06-22 15:09:55.782 +01:00 [INF] Content root path: C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API
+2023-06-22 15:09:55.835 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2023-06-22 15:09:57.873 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 1918.0692ms
+2023-06-22 15:09:57.897 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - -
+2023-06-22 15:09:57.917 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - - - 200 11990 application/javascript;+charset=utf-8 8.6644ms
+2023-06-22 15:09:57.926 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_vs/browserLink - -
+2023-06-22 15:09:58.840 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 913.3755ms
+2023-06-22 15:09:59.059 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2023-06-22 15:09:59.293 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 233.9222ms
+2023-06-22 15:10:35.721 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Customer/CreateCustomer application/json 166
+2023-06-22 15:10:35.788 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.CreateCustomer (Dotnet7API)'
+2023-06-22 15:10:35.837 +01:00 [INF] Route matched with {action = "CreateCustomer", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCustomer(Dotnet7API.Modal.CustomerModal) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-22 15:10:36.322 +01:00 [INF] Executing action method Dotnet7API.Controllers.CustomerController.CreateCustomer (Dotnet7API) - Validation state: "Valid"
+2023-06-22 15:10:36.333 +01:00 [INF] Create Begins
+2023-06-22 15:10:38.321 +01:00 [INF] Executed DbCommand (168ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = Boolean), @p4='?' (Size = 50), @p5='?' (Size = 50), @p6='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [tbl.Customer] ([Code], [CreditLimit], [Email], [IsActive], [Name], [Phone], [Taxcode])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-06-22 15:10:38.393 +01:00 [INF] Executed action method Dotnet7API.Controllers.CustomerController.CreateCustomer (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2061.8764ms.
+2023-06-22 15:10:38.405 +01:00 [INF] Executing OkObjectResult, writing value of type 'Dotnet7API.Helper.APIResponse'.
+2023-06-22 15:10:38.417 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.CreateCustomer (Dotnet7API) in 2575.3809ms
+2023-06-22 15:10:38.418 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.CreateCustomer (Dotnet7API)'
+2023-06-22 15:10:38.430 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Customer/CreateCustomer application/json 166 - 200 - application/json;+charset=utf-8 2708.5669ms
+2023-06-22 15:10:59.018 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Customer/CreateCustomer application/json 166
+2023-06-22 15:10:59.047 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.CreateCustomer (Dotnet7API)'
+2023-06-22 15:10:59.048 +01:00 [INF] Route matched with {action = "CreateCustomer", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCustomer(Dotnet7API.Modal.CustomerModal) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-22 15:10:59.128 +01:00 [INF] Executing action method Dotnet7API.Controllers.CustomerController.CreateCustomer (Dotnet7API) - Validation state: "Valid"
+2023-06-22 15:10:59.133 +01:00 [INF] Create Begins
+2023-06-22 15:10:59.822 +01:00 [ERR] Failed executing DbCommand (546ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = Boolean), @p4='?' (Size = 50), @p5='?' (Size = 50), @p6='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [tbl.Customer] ([Code], [CreditLimit], [Email], [IsActive], [Name], [Phone], [Taxcode])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-06-22 15:11:00.363 +01:00 [ERR] An exception occurred in the database while saving changes for context type 'Dotnet7API.Repos.LearndataContextb'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_tbl.Customer'. Cannot insert duplicate key in object 'dbo.tbl.Customer'. The duplicate key value is (0).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:43af8a19-5518-45cf-9b2f-00e29de592a5
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK_tbl.Customer'. Cannot insert duplicate key in object 'dbo.tbl.Customer'. The duplicate key value is (0).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__208_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:43af8a19-5518-45cf-9b2f-00e29de592a5
+Error Number:2627,State:1,Class:14
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2023-06-22 15:11:01.615 +01:00 [ERR] An error occurred while saving the entity changes. See the inner exception for details.
+2023-06-22 15:11:01.616 +01:00 [INF] Executed action method Dotnet7API.Controllers.CustomerController.CreateCustomer (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2486.7573ms.
+2023-06-22 15:11:01.617 +01:00 [INF] Executing OkObjectResult, writing value of type 'Dotnet7API.Helper.APIResponse'.
+2023-06-22 15:11:01.618 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.CreateCustomer (Dotnet7API) in 2569.8251ms
+2023-06-22 15:11:01.618 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.CreateCustomer (Dotnet7API)'
+2023-06-22 15:11:01.620 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Customer/CreateCustomer application/json 166 - 200 - application/json;+charset=utf-8 2602.0049ms
+2023-06-22 16:30:16.310 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-22 16:30:16.347 +01:00 [INF] Hosting environment: Development
+2023-06-22 16:30:16.358 +01:00 [INF] Content root path: C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API
+2023-06-22 16:30:16.358 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2023-06-22 16:30:17.118 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 774.8317ms
+2023-06-22 16:30:17.174 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - -
+2023-06-22 16:30:17.177 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_vs/browserLink - -
+2023-06-22 16:30:17.183 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - - - 200 11990 application/javascript;+charset=utf-8 8.2821ms
+2023-06-22 16:30:17.305 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 117.4773ms
+2023-06-22 16:30:17.572 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2023-06-22 16:30:17.805 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 231.7399ms
+2023-06-22 16:30:46.085 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/api/Customer/GetAll - -
+2023-06-22 16:30:46.133 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API)'
+2023-06-22 16:30:46.168 +01:00 [INF] Route matched with {action = "GetAllCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCustomers() on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-22 16:30:46.650 +01:00 [INF] Executing action method Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API) - Validation state: "Valid"
+2023-06-22 16:30:48.658 +01:00 [INF] Executed DbCommand (139ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Code], [t].[CreditLimit], [t].[Email], [t].[IsActive], [t].[Name], [t].[Phone], [t].[Taxcode]
+FROM [tbl.Customer] AS [t]
+2023-06-22 16:30:48.897 +01:00 [INF] Executed action method Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2237.452ms.
+2023-06-22 16:30:48.909 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Dotnet7API.Modal.CustomerModal, Dotnet7API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-22 16:30:48.933 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API) in 2759.5143ms
+2023-06-22 16:30:48.934 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API)'
+2023-06-22 16:30:48.946 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/api/Customer/GetAll - - - 200 - application/json;+charset=utf-8 2861.4136ms
+2023-06-22 16:30:50.316 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/api/Customer/GetAll - -
+2023-06-22 16:30:50.416 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/api/Customer/GetAll - - - 503 - - 99.8910ms
+2023-06-22 16:30:51.042 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/api/Customer/GetAll - -
+2023-06-22 16:30:51.045 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/api/Customer/GetAll - - - 503 - - 3.0812ms
+2023-06-22 16:30:51.800 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/api/Customer/GetAll - -
+2023-06-22 16:30:51.802 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/api/Customer/GetAll - - - 503 - - 1.5950ms
+2023-06-22 16:31:35.290 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/api/Customer/GetAll - -
+2023-06-22 16:31:35.293 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API)'
+2023-06-22 16:31:35.309 +01:00 [INF] Route matched with {action = "GetAllCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCustomers() on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-22 16:31:35.339 +01:00 [INF] Executing action method Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API) - Validation state: "Valid"
+2023-06-22 16:31:35.418 +01:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Code], [t].[CreditLimit], [t].[Email], [t].[IsActive], [t].[Name], [t].[Phone], [t].[Taxcode]
+FROM [tbl.Customer] AS [t]
+2023-06-22 16:31:35.421 +01:00 [INF] Executed action method Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 82.0033ms.
+2023-06-22 16:31:35.422 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Dotnet7API.Modal.CustomerModal, Dotnet7API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-22 16:31:35.422 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API) in 113.2205ms
+2023-06-22 16:31:35.423 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API)'
+2023-06-22 16:31:35.423 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/api/Customer/GetAll - - - 200 - application/json;+charset=utf-8 132.8933ms
+2023-06-22 16:36:06.596 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2023-06-22 16:36:06.635 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 39.4468ms
+2023-06-22 16:36:06.750 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_vs/browserLink - -
+2023-06-22 16:36:06.751 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - -
+2023-06-22 16:36:06.768 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - - - 200 11990 application/javascript;+charset=utf-8 17.0591ms
+2023-06-22 16:36:06.836 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 86.3257ms
+2023-06-22 16:36:07.244 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2023-06-22 16:36:07.278 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 34.0744ms
