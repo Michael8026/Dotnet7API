@@ -6,11 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dotnet7API.Repos.Models;
 
-[Table("tbl.Customer")]
+[Table("tbl_Customer")]
 public partial class TblCustomer
 {
     [Key]
-    public string Code { get; set; }
+    [StringLength(50)]
+    public string Code { get; set; } = null!;
 
     [StringLength(50)]
     public string? Name { get; set; }

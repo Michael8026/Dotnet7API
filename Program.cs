@@ -3,6 +3,7 @@ using Dotnet7API.Container;
 using Dotnet7API.Helper;
 using Dotnet7API.Repos;
 using Dotnet7API.Service;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -18,12 +19,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICustomerService, CustomerService>();
 builder.Services.AddDbContext<LearndataContextb>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("apicon")));
 
+
+//Registering the Authentication Handler
+builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
 var automapper = new MapperConfiguration(item => item.AddProfile(new AutoMapperHandler()));
 IMapper mapper = automapper.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
 //To enable cors policy to prevent cross origin access to the APIs
-builder.Services.AddCors(p => p.AddDefaultPolicy( build =>
+builder.Services.AddCors(p => p.AddDefaultPolicy(build =>
 {
     build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
 }));
@@ -52,6 +57,7 @@ builder.Logging.AddSerilog(logger);
 
 var app = builder.Build();
 
+//calling the RateLimiter
 app.UseRateLimiter();
 
 // Configure the HTTP request pipeline.
@@ -64,6 +70,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors();
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

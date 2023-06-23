@@ -1,11 +1,13 @@
 ﻿using Dotnet7API.Modal;
 using Dotnet7API.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
 namespace Dotnet7API.Controllers
 {
+    [Authorize]
     [EnableRateLimiting("fixed window")]
     [Route("api/[controller]")]
     [ApiController]
@@ -17,6 +19,7 @@ namespace Dotnet7API.Controllers
             _service = service;
         }
 
+        [AllowAnonymous]
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAllCustomers()
         {

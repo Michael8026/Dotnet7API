@@ -1,0 +1,1 @@
+Scaffold-DbContext "Server=DESKTOP-57A19MN;Database=test_db;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Repos/Models -context LearndataContextb -f -contextDir Repos -DataAnnotations

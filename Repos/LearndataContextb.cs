@@ -18,14 +18,22 @@ public partial class LearndataContextb : DbContext
 
     public virtual DbSet<TblCustomer> TblCustomers { get; set; }
 
+    public virtual DbSet<TblRefreshToken> TblRefreshTokens { get; set; }
+
     public virtual DbSet<TblUser> TblUsers { get; set; }
+
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TblCustomer>(entity =>
         {
-            entity.Property(e => e.Code).ValueGeneratedNever();
+            entity.HasKey(e => e.Code).HasName("PK_tbl.Customer");
+        });
+
+        modelBuilder.Entity<TblUser>(entity =>
+        {
+            entity.HasKey(e => e.Code).HasName("PK_tbl.User");
         });
 
         OnModelCreatingPartial(modelBuilder);
