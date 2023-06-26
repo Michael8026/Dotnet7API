@@ -199,3 +199,1173 @@ FROM [tbl_Customer] AS [t]
 2023-06-23 16:42:44.923 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API) in 192.4792ms
 2023-06-23 16:42:44.923 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API)'
 2023-06-23 16:42:44.924 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetAll - - - 200 - application/json;+charset=utf-8 207.1316ms
+2023-06-26 09:46:24.725 +01:00 [INF] User profile is available. Using 'C:\Users\USER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-26 09:46:25.845 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-26 09:46:25.848 +01:00 [INF] Hosting environment: Development
+2023-06-26 09:46:25.858 +01:00 [INF] Content root path: C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API
+2023-06-26 09:46:26.072 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2023-06-26 09:46:28.715 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 2633.9278ms
+2023-06-26 09:46:28.716 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - -
+2023-06-26 09:46:28.737 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - - - 200 11990 application/javascript;+charset=utf-8 4.5392ms
+2023-06-26 09:46:28.737 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_vs/browserLink - -
+2023-06-26 09:46:29.047 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 309.7491ms
+2023-06-26 09:46:29.338 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2023-06-26 09:46:29.740 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 401.8490ms
+2023-06-26 09:47:39.514 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47
+2023-06-26 09:47:39.577 +01:00 [INF] CORS policy execution successful.
+2023-06-26 09:47:40.490 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: No header found
+2023-06-26 09:47:40.528 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 09:47:40.731 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 09:47:41.314 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 09:47:45.560 +01:00 [INF] Executed DbCommand (236ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 09:47:46.464 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 5727.8775ms
+2023-06-26 09:47:46.499 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 09:47:46.619 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentOutOfRangeException: IDX10653: The encryption algorithm 'HS256' requires a key size of at least '128' bits. Key '[PII of type 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]', is of size: '112'. (Parameter 'key')
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider..ctor(SecurityKey key, String algorithm, Boolean willCreateSignatures)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateSignatureProvider(SecurityKey key, String algorithm, Boolean willCreateSignatures, Boolean cacheProvider)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateForSigning(SecurityKey key, String algorithm, Boolean cacheProvider)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateForSigning(SecurityKey key, String algorithm)
+   at Microsoft.IdentityModel.JsonWebTokens.JwtTokenUtilities.CreateEncodedSignature(String input, SigningCredentials signingCredentials)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.CreateJwtSecurityTokenPrivate(String issuer, String audience, ClaimsIdentity subject, Nullable`1 notBefore, Nullable`1 expires, Nullable`1 issuedAt, SigningCredentials signingCredentials, EncryptingCredentials encryptingCredentials, IDictionary`2 claimCollection, String tokenType, IDictionary`2 additionalHeaderClaims, IDictionary`2 additionalInnerHeaderClaims)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.CreateToken(SecurityTokenDescriptor tokenDescriptor)
+   at Dotnet7API.Controllers.AuthorizeController.GenerateToken(UserCredentials userCredentials) in C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API\Controllers\AuthorizeController.cs:line 49
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-06-26 09:47:46.663 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47 - 500 - text/plain;+charset=utf-8 7149.0229ms
+2023-06-26 09:49:02.977 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47
+2023-06-26 09:49:02.983 +01:00 [INF] CORS policy execution successful.
+2023-06-26 09:49:02.995 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: No header found
+2023-06-26 09:49:02.995 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 09:49:02.996 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 09:49:03.092 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 09:49:03.150 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 09:49:03.228 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 231.7262ms
+2023-06-26 09:49:03.229 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 09:49:03.238 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentOutOfRangeException: IDX10653: The encryption algorithm 'HS256' requires a key size of at least '128' bits. Key '[PII of type 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]', is of size: '112'. (Parameter 'key')
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider..ctor(SecurityKey key, String algorithm, Boolean willCreateSignatures)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateSignatureProvider(SecurityKey key, String algorithm, Boolean willCreateSignatures, Boolean cacheProvider)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateForSigning(SecurityKey key, String algorithm, Boolean cacheProvider)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateForSigning(SecurityKey key, String algorithm)
+   at Microsoft.IdentityModel.JsonWebTokens.JwtTokenUtilities.CreateEncodedSignature(String input, SigningCredentials signingCredentials)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.CreateJwtSecurityTokenPrivate(String issuer, String audience, ClaimsIdentity subject, Nullable`1 notBefore, Nullable`1 expires, Nullable`1 issuedAt, SigningCredentials signingCredentials, EncryptingCredentials encryptingCredentials, IDictionary`2 claimCollection, String tokenType, IDictionary`2 additionalHeaderClaims, IDictionary`2 additionalInnerHeaderClaims)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.CreateToken(SecurityTokenDescriptor tokenDescriptor)
+   at Dotnet7API.Controllers.AuthorizeController.GenerateToken(UserCredentials userCredentials) in C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API\Controllers\AuthorizeController.cs:line 49
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-06-26 09:49:03.246 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47 - 500 - text/plain;+charset=utf-8 269.2529ms
+2023-06-26 09:49:10.281 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2023-06-26 09:49:10.310 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 28.0850ms
+2023-06-26 09:49:10.397 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/swagger-ui-bundle.js - -
+2023-06-26 09:49:10.399 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/swagger-ui.css - -
+2023-06-26 09:49:10.401 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/swagger-ui-standalone-preset.js - -
+2023-06-26 09:49:10.402 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - -
+2023-06-26 09:49:10.466 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - - - 200 11990 application/javascript;+charset=utf-8 63.7116ms
+2023-06-26 09:49:10.643 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2023-06-26 09:49:10.650 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2023-06-26 09:49:10.654 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/swagger-ui.css - - - 200 144929 text/css 254.5904ms
+2023-06-26 09:49:10.668 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/swagger-ui-standalone-preset.js - - - 200 312163 text/javascript 267.2511ms
+2023-06-26 09:49:10.669 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_vs/browserLink - -
+2023-06-26 09:49:10.698 +01:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2023-06-26 09:49:10.734 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 65.1256ms
+2023-06-26 09:49:10.769 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/swagger-ui-bundle.js - - - 200 1061536 text/javascript 371.1639ms
+2023-06-26 09:49:10.954 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/favicon-32x32.png - -
+2023-06-26 09:49:10.954 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2023-06-26 09:49:10.955 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-06-26 09:49:10.955 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/favicon-32x32.png - - - 200 628 image/png 1.1861ms
+2023-06-26 09:49:10.967 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 12.4885ms
+2023-06-26 09:49:33.986 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47
+2023-06-26 09:49:34.027 +01:00 [INF] CORS policy execution successful.
+2023-06-26 09:49:34.034 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: No header found
+2023-06-26 09:49:34.034 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 09:49:34.034 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 09:49:34.072 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 09:49:34.173 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 09:49:34.244 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 209.6967ms
+2023-06-26 09:49:34.245 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 09:49:34.251 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentOutOfRangeException: IDX10653: The encryption algorithm 'HS256' requires a key size of at least '128' bits. Key '[PII of type 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]', is of size: '112'. (Parameter 'key')
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider..ctor(SecurityKey key, String algorithm, Boolean willCreateSignatures)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateSignatureProvider(SecurityKey key, String algorithm, Boolean willCreateSignatures, Boolean cacheProvider)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateForSigning(SecurityKey key, String algorithm, Boolean cacheProvider)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateForSigning(SecurityKey key, String algorithm)
+   at Microsoft.IdentityModel.JsonWebTokens.JwtTokenUtilities.CreateEncodedSignature(String input, SigningCredentials signingCredentials)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.CreateJwtSecurityTokenPrivate(String issuer, String audience, ClaimsIdentity subject, Nullable`1 notBefore, Nullable`1 expires, Nullable`1 issuedAt, SigningCredentials signingCredentials, EncryptingCredentials encryptingCredentials, IDictionary`2 claimCollection, String tokenType, IDictionary`2 additionalHeaderClaims, IDictionary`2 additionalInnerHeaderClaims)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.CreateToken(SecurityTokenDescriptor tokenDescriptor)
+   at Dotnet7API.Controllers.AuthorizeController.GenerateToken(UserCredentials userCredentials) in C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API\Controllers\AuthorizeController.cs:line 49
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-06-26 09:49:34.255 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47 - 500 - text/plain;+charset=utf-8 269.0014ms
+2023-06-26 09:49:58.433 +01:00 [INF] User profile is available. Using 'C:\Users\USER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-26 09:49:58.751 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-26 09:49:58.755 +01:00 [INF] Hosting environment: Development
+2023-06-26 09:49:58.759 +01:00 [INF] Content root path: C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API
+2023-06-26 09:49:58.811 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2023-06-26 09:49:59.481 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 666.7357ms
+2023-06-26 09:49:59.597 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - -
+2023-06-26 09:49:59.602 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_vs/browserLink - -
+2023-06-26 09:49:59.608 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - - - 200 11990 application/javascript;+charset=utf-8 10.3931ms
+2023-06-26 09:49:59.696 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 85.6922ms
+2023-06-26 09:50:00.044 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2023-06-26 09:50:00.445 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 400.4740ms
+2023-06-26 09:50:33.544 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47
+2023-06-26 09:50:33.559 +01:00 [INF] CORS policy execution successful.
+2023-06-26 09:50:33.883 +01:00 [INF] BasicAuthentication was not authenticated. Failure message: No header found
+2023-06-26 09:50:33.889 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 09:50:33.953 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 09:50:34.156 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 09:50:36.366 +01:00 [INF] Executed DbCommand (120ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 09:50:36.845 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2682.081ms.
+2023-06-26 09:50:36.874 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 09:50:36.894 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 2936.4863ms
+2023-06-26 09:50:36.895 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 09:50:36.907 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47 - 200 - text/plain;+charset=utf-8 3363.4933ms
+2023-06-26 11:13:03.222 +01:00 [INF] User profile is available. Using 'C:\Users\USER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-26 11:13:04.879 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-26 11:13:04.882 +01:00 [INF] Hosting environment: Development
+2023-06-26 11:13:04.885 +01:00 [INF] Content root path: C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API
+2023-06-26 11:13:05.097 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2023-06-26 11:13:07.147 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - -
+2023-06-26 11:13:07.214 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_vs/browserLink - -
+2023-06-26 11:13:07.215 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 2047.8699ms
+2023-06-26 11:13:07.215 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - - - 200 11990 application/javascript;+charset=utf-8 10.9763ms
+2023-06-26 11:13:07.907 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 692.3780ms
+2023-06-26 11:13:08.046 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2023-06-26 11:13:08.496 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 449.5246ms
+2023-06-26 11:13:22.204 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/api/Customer/GetAll - -
+2023-06-26 11:13:23.510 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API)'
+2023-06-26 11:13:23.771 +01:00 [INF] Route matched with {action = "GetAllCustomers", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCustomers() on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 11:13:24.907 +01:00 [INF] Executing action method Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API) - Validation state: "Valid"
+2023-06-26 11:13:30.193 +01:00 [INF] Executed DbCommand (575ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Code], [t].[CreditLimit], [t].[Email], [t].[IsActive], [t].[Name], [t].[Phone], [t].[Taxcode]
+FROM [tbl_Customer] AS [t]
+2023-06-26 11:13:30.508 +01:00 [INF] Executed action method Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5566.16ms.
+2023-06-26 11:13:30.532 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Dotnet7API.Modal.CustomerModal, Dotnet7API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-26 11:13:30.588 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API) in 6810.5784ms
+2023-06-26 11:13:30.589 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetAllCustomers (Dotnet7API)'
+2023-06-26 11:13:30.702 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/api/Customer/GetAll - - - 200 - application/json;+charset=utf-8 8498.1852ms
+2023-06-26 11:14:13.179 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:14:13.197 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:14:13.224 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:14:13.239 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 60.2486ms
+2023-06-26 11:14:46.073 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:14:46.172 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:14:46.173 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:14:46.173 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 100.1742ms
+2023-06-26 11:18:36.906 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47
+2023-06-26 11:18:36.922 +01:00 [INF] CORS policy execution successful.
+2023-06-26 11:18:36.945 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:18:36.966 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 11:18:37.144 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 11:18:37.614 +01:00 [INF] Executed DbCommand (150ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 11:18:38.147 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1001.9647ms.
+2023-06-26 11:18:38.148 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 11:18:38.150 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 1183.7481ms
+2023-06-26 11:18:38.151 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:18:38.152 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47 - 200 - text/plain;+charset=utf-8 1246.2411ms
+2023-06-26 11:20:07.655 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:20:07.830 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:20:07 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:20:08.117 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:20:07 AM'.
+2023-06-26 11:20:08.117 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:20:08.119 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:20:08.119 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 464.1453ms
+2023-06-26 11:20:20.181 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:20:20.183 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:20:20 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:20:20.184 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:20:20 AM'.
+2023-06-26 11:20:20.184 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:20:20.184 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:20:20.185 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 4.8909ms
+2023-06-26 11:20:28.457 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:20:28.458 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:20:28 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:20:28.458 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:20:28 AM'.
+2023-06-26 11:20:28.458 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:20:28.458 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:20:28.459 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 2.4304ms
+2023-06-26 11:20:31.312 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:20:31.316 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 4.2188ms
+2023-06-26 11:21:12.087 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:21:12.088 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:21:12 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:21:12.088 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:21:12 AM'.
+2023-06-26 11:21:12.088 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:21:12.088 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:21:12.091 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 3.8127ms
+2023-06-26 11:21:15.477 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:21:15.478 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 1.0845ms
+2023-06-26 11:21:17.424 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:21:17.425 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 0.7377ms
+2023-06-26 11:21:29.262 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:21:29.263 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:21:29 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:21:29.264 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:21:29 AM'.
+2023-06-26 11:21:29.264 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:21:29.264 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:21:29.265 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 3.1697ms
+2023-06-26 11:22:31.226 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:22:31.227 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:22:31 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:22:31.228 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:22:31 AM'.
+2023-06-26 11:22:31.228 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:22:31.228 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:22:31.229 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 2.8538ms
+2023-06-26 11:22:33.123 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:22:33.157 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 33.4163ms
+2023-06-26 11:22:34.476 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:22:34.476 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 0.6427ms
+2023-06-26 11:22:35.632 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:22:35.633 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 0.7141ms
+2023-06-26 11:22:36.648 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:22:36.649 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 0.7380ms
+2023-06-26 11:22:37.533 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:22:37.534 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 0.6782ms
+2023-06-26 11:26:00.461 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:26:00.462 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:26:00 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:26:00.462 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:19:22 AM', Current time: '6/26/2023 10:26:00 AM'.
+2023-06-26 11:26:00.462 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:26:00.462 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:26:00.463 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 2.2615ms
+2023-06-26 11:31:29.397 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47
+2023-06-26 11:31:29.398 +01:00 [INF] CORS policy execution successful.
+2023-06-26 11:31:29.398 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:31:29.399 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 11:31:29.492 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 11:31:29.607 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 11:31:29.609 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 116.2732ms.
+2023-06-26 11:31:29.609 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 11:31:29.610 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 210.7171ms
+2023-06-26 11:31:29.610 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:31:29.610 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47 - 200 - text/plain;+charset=utf-8 213.8057ms
+2023-06-26 11:32:15.940 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:32:15.941 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:32:14 AM', Current time: '6/26/2023 10:32:15 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:32:15.941 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:32:14 AM', Current time: '6/26/2023 10:32:15 AM'.
+2023-06-26 11:32:15.941 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:32:15.941 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:32:15.942 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 2.1496ms
+2023-06-26 11:32:17.962 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:32:17.963 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 0.7640ms
+2023-06-26 11:34:03.127 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Authorize/GenerateToken text/plain 50
+2023-06-26 11:34:03.128 +01:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2023-06-26 11:34:03.128 +01:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2023-06-26 11:34:03.129 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Authorize/GenerateToken text/plain 50 - 405 - - 1.2563ms
+2023-06-26 11:34:19.496 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken text/plain 50
+2023-06-26 11:34:19.497 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:34:19.497 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 11:34:19.574 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-26 11:34:19.589 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 91.612ms
+2023-06-26 11:34:19.589 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:34:19.589 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken text/plain 50 - 415 - application/problem+json;+charset=utf-8 93.0066ms
+2023-06-26 11:35:01.842 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50
+2023-06-26 11:35:01.843 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:35:01.843 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 11:35:01.932 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 11:35:01.938 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 11:35:01.940 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 7.8315ms.
+2023-06-26 11:35:01.940 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 11:35:01.941 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 97.6963ms
+2023-06-26 11:35:01.941 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:35:01.942 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50 - 200 - text/plain;+charset=utf-8 99.5629ms
+2023-06-26 11:35:58.707 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:35:58.708 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:35:46 AM', Current time: '6/26/2023 10:35:58 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:35:58.708 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:35:46 AM', Current time: '6/26/2023 10:35:58 AM'.
+2023-06-26 11:35:58.709 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:35:58.709 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:35:58.709 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 2.1163ms
+2023-06-26 11:36:01.649 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:36:01.671 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 22.3456ms
+2023-06-26 11:36:02.841 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:36:02.842 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 0.6131ms
+2023-06-26 11:36:03.866 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:36:03.869 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 3.6001ms
+2023-06-26 11:46:26.608 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:46:26.609 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:35:46 AM', Current time: '6/26/2023 10:46:26 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:46:26.609 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:35:46 AM', Current time: '6/26/2023 10:46:26 AM'.
+2023-06-26 11:46:26.610 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:46:26.610 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:46:26.610 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 2.4621ms
+2023-06-26 11:46:46.182 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - -
+2023-06-26 11:46:46.183 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:46:46.183 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:46:46.183 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/api/Customer/GetCustomerByCode?code=3 - - - 401 - - 1.2636ms
+2023-06-26 11:51:01.520 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50
+2023-06-26 11:51:01.521 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:51:01.521 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 11:51:01.585 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 11:51:01.635 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 11:51:01.636 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 51.1093ms.
+2023-06-26 11:51:01.636 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 11:51:01.637 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 115.9666ms
+2023-06-26 11:51:01.637 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:51:01.637 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50 - 200 - text/plain;+charset=utf-8 117.5671ms
+2023-06-26 11:51:06.134 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50
+2023-06-26 11:51:06.135 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:51:06.136 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 11:51:06.166 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 11:51:06.182 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 11:51:06.187 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 20.5106ms.
+2023-06-26 11:51:06.187 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 11:51:06.188 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 51.7287ms
+2023-06-26 11:51:06.188 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:51:06.188 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50 - 200 - text/plain;+charset=utf-8 53.8643ms
+2023-06-26 11:51:09.356 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50
+2023-06-26 11:51:09.356 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:51:09.357 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 11:51:09.487 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 11:51:09.495 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 11:51:09.496 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 9.1914ms.
+2023-06-26 11:51:09.496 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 11:51:09.497 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 140.2289ms
+2023-06-26 11:51:09.497 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:51:09.497 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50 - 200 - text/plain;+charset=utf-8 141.1623ms
+2023-06-26 11:51:31.726 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:51:31.799 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 11:51:31.805 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 11:51:31.877 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 11:51:31.892 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 86.9641ms
+2023-06-26 11:51:31.892 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 11:51:31.892 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 400 - application/problem+json;+charset=utf-8 166.7452ms
+2023-06-26 11:51:42.354 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:51:42.356 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 11:51:42.356 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 11:51:42.360 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 11:51:42.361 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 4.7087ms
+2023-06-26 11:51:42.361 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 11:51:42.361 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 400 - application/problem+json;+charset=utf-8 6.7054ms
+2023-06-26 11:51:51.982 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:51:51.982 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 11:51:51.983 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 11:51:51.983 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 11:51:51.984 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 0.9651ms
+2023-06-26 11:51:51.984 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 11:51:51.984 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 400 - application/problem+json;+charset=utf-8 2.5648ms
+2023-06-26 11:52:34.004 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:52:34.005 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:51:54 AM', Current time: '6/26/2023 10:52:34 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:52:34.005 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:51:54 AM', Current time: '6/26/2023 10:52:34 AM'.
+2023-06-26 11:52:34.005 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:52:34.006 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:52:34.006 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 2.1296ms
+2023-06-26 11:53:16.852 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:53:16.854 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:51:54 AM', Current time: '6/26/2023 10:53:16 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:53:16.854 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:51:54 AM', Current time: '6/26/2023 10:53:16 AM'.
+2023-06-26 11:53:16.854 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:53:16.855 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:53:16.855 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 2.9068ms
+2023-06-26 11:53:18.648 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:53:18.649 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 0.5389ms
+2023-06-26 11:53:20.599 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:53:20.599 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 0.6977ms
+2023-06-26 11:53:21.825 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:53:21.825 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 0.7892ms
+2023-06-26 11:53:30.015 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50
+2023-06-26 11:53:30.015 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:53:30.016 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 11:53:30.059 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 11:53:30.068 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 11:53:30.069 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 9.3686ms.
+2023-06-26 11:53:30.069 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 11:53:30.070 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 54.1921ms
+2023-06-26 11:53:30.070 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:53:30.071 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50 - 200 - text/plain;+charset=utf-8 55.9350ms
+2023-06-26 11:54:21.236 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:54:21.236 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:54:21.237 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:54:21.238 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 1.9307ms
+2023-06-26 11:54:22.973 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:54:22.974 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 0.8344ms
+2023-06-26 11:54:23.922 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:54:23.923 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 0.8009ms
+2023-06-26 11:54:34.512 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:54:34.513 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:54:15 AM', Current time: '6/26/2023 10:54:34 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 11:54:34.513 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 10:54:15 AM', Current time: '6/26/2023 10:54:34 AM'.
+2023-06-26 11:54:34.514 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 11:54:34.514 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 11:54:34.514 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 2.6635ms
+2023-06-26 11:56:27.671 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2023-06-26 11:56:27.704 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 32.9896ms
+2023-06-26 11:56:27.775 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/swagger-ui.css - -
+2023-06-26 11:56:27.776 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/swagger-ui-bundle.js - -
+2023-06-26 11:56:27.777 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/swagger-ui-standalone-preset.js - -
+2023-06-26 11:56:28.990 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - -
+2023-06-26 11:56:28.992 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - - - 200 11990 application/javascript;+charset=utf-8 1.6665ms
+2023-06-26 11:56:28.992 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_vs/browserLink - -
+2023-06-26 11:56:29.048 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 56.0489ms
+2023-06-26 11:56:30.352 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2023-06-26 11:56:30.354 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/swagger-ui.css - - - 200 144929 text/css 2578.9725ms
+2023-06-26 11:56:30.713 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2023-06-26 11:56:30.724 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/swagger-ui-standalone-preset.js - - - 200 312163 text/javascript 2946.5894ms
+2023-06-26 11:56:31.431 +01:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2023-06-26 11:56:31.505 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/swagger-ui-bundle.js - - - 200 1061536 text/javascript 3728.4994ms
+2023-06-26 11:56:32.262 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2023-06-26 11:56:32.296 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/favicon-32x32.png - -
+2023-06-26 11:56:32.297 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-06-26 11:56:32.297 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/favicon-32x32.png - - - 200 628 image/png 1.2076ms
+2023-06-26 11:56:32.408 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 146.1523ms
+2023-06-26 11:56:38.689 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2023-06-26 11:56:38.778 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 88.7302ms
+2023-06-26 11:56:38.787 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - -
+2023-06-26 11:56:38.789 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - - - 200 11990 application/javascript;+charset=utf-8 2.1959ms
+2023-06-26 11:56:38.795 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_vs/browserLink - -
+2023-06-26 11:56:38.861 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 66.0709ms
+2023-06-26 11:56:39.062 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2023-06-26 11:56:39.072 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 9.9090ms
+2023-06-26 11:56:43.113 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50
+2023-06-26 11:56:43.113 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:56:43.119 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 11:56:43.155 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 11:56:43.188 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 11:56:43.190 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 34.7469ms.
+2023-06-26 11:56:43.190 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 11:56:43.191 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 71.3842ms
+2023-06-26 11:56:43.191 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 11:56:43.191 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50 - 200 - text/plain;+charset=utf-8 78.7426ms
+2023-06-26 11:57:06.715 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:57:06.717 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 11:57:06.722 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 11:57:06.723 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 11:57:06.723 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 1.5851ms
+2023-06-26 11:57:06.724 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 11:57:06.724 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 400 - application/problem+json;+charset=utf-8 8.2852ms
+2023-06-26 11:57:13.801 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:57:13.804 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 2.6053ms
+2023-06-26 11:57:16.755 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:57:16.756 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 0.5078ms
+2023-06-26 11:57:18.059 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:57:18.060 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 11:57:18.060 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 11:57:18.061 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 11:57:18.061 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 1.2871ms
+2023-06-26 11:57:18.061 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 11:57:18.062 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 400 - application/problem+json;+charset=utf-8 2.6618ms
+2023-06-26 11:57:19.353 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:57:19.354 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 0.4961ms
+2023-06-26 11:57:20.444 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:57:20.445 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 0.6784ms
+2023-06-26 11:57:21.715 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 11:57:21.716 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 0.6031ms
+2023-06-26 12:04:40.295 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 12:04:40.296 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 11:01:43 AM', Current time: '6/26/2023 11:04:40 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 12:04:40.297 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 11:01:43 AM', Current time: '6/26/2023 11:04:40 AM'.
+2023-06-26 12:04:40.297 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 12:04:40.297 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 12:04:40.298 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 2.5536ms
+2023-06-26 12:35:25.666 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 12:35:25.667 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 11:01:43 AM', Current time: '6/26/2023 11:35:25 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 12:35:25.668 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 11:01:43 AM', Current time: '6/26/2023 11:35:25 AM'.
+2023-06-26 12:35:25.668 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 12:35:25.668 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 12:35:25.668 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 2.0340ms
+2023-06-26 12:37:21.448 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47
+2023-06-26 12:37:21.448 +01:00 [INF] CORS policy execution successful.
+2023-06-26 12:37:21.449 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 12:37:21.449 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 12:37:21.490 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 12:37:21.672 +01:00 [INF] Executed DbCommand (146ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 12:37:21.673 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 182.8088ms.
+2023-06-26 12:37:21.674 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 12:37:21.674 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 225.0356ms
+2023-06-26 12:37:21.674 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 12:37:21.675 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47 - 200 - text/plain;+charset=utf-8 226.7468ms
+2023-06-26 12:38:48.942 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 12:38:48.943 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 12:38:48.943 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 12:38:48.944 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 12:38:48.944 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 1.1488ms
+2023-06-26 12:38:48.944 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 12:38:48.945 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 400 - application/problem+json;+charset=utf-8 2.4808ms
+2023-06-26 12:38:57.600 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - -
+2023-06-26 12:38:57.601 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=3 - - - 401 - - 0.7325ms
+2023-06-26 12:39:21.643 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 12:39:21.644 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 12:39:21.644 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 12:39:21.644 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 12:39:21.645 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 0.9122ms
+2023-06-26 12:39:21.645 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 12:39:21.645 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 400 - application/problem+json;+charset=utf-8 2.0466ms
+2023-06-26 12:59:25.924 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50
+2023-06-26 12:59:25.924 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 12:59:25.925 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 12:59:25.954 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 12:59:26.187 +01:00 [INF] Executed DbCommand (178ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 12:59:26.188 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 234.0443ms.
+2023-06-26 12:59:26.188 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 12:59:26.189 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 264.3934ms
+2023-06-26 12:59:26.189 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 12:59:26.189 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50 - 200 - text/plain;+charset=utf-8 265.4450ms
+2023-06-26 13:00:10.308 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:00:10.309 +01:00 [INF] Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token.
+2023-06-26 13:00:10.309 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 13:00:10.309 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 13:00:10.310 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 1.7634ms
+2023-06-26 13:00:12.594 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:00:12.635 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 40.0925ms
+2023-06-26 13:00:14.047 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:00:14.047 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5420ms
+2023-06-26 13:00:15.186 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:00:15.192 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 5.6273ms
+2023-06-26 13:00:15.971 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:00:15.972 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5881ms
+2023-06-26 13:02:10.226 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:02:10.227 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 13:02:10.227 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 13:02:10.227 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 1.1529ms
+2023-06-26 13:02:12.996 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:02:12.997 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5483ms
+2023-06-26 13:02:14.067 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:02:14.068 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5572ms
+2023-06-26 13:03:48.772 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:03:48.773 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:03:48.773 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 13:03:48.774 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 13:03:48.775 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 2.3026ms
+2023-06-26 13:03:48.775 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:03:48.776 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 400 - application/problem+json;+charset=utf-8 4.0385ms
+2023-06-26 13:04:09.706 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:04:09.706 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:04:09.707 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 13:04:09.707 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 13:04:09.708 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 1.1375ms
+2023-06-26 13:04:09.708 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:04:09.708 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 400 - application/problem+json;+charset=utf-8 2.4528ms
+2023-06-26 13:04:11.374 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:04:11.374 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5386ms
+2023-06-26 13:04:12.393 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:04:12.393 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.6120ms
+2023-06-26 13:09:40.494 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50
+2023-06-26 13:09:40.494 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 13:09:40.494 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 13:09:40.540 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 13:09:40.659 +01:00 [INF] Executed DbCommand (59ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 13:09:40.660 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 119.9471ms.
+2023-06-26 13:09:40.660 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 13:09:40.661 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 167.275ms
+2023-06-26 13:09:40.662 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 13:09:40.662 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50 - 200 - text/plain;+charset=utf-8 168.5820ms
+2023-06-26 13:09:57.896 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:09:57.896 +01:00 [INF] Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token.
+2023-06-26 13:09:57.897 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 13:09:57.897 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 13:09:57.897 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 1.1935ms
+2023-06-26 13:10:15.031 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:15.033 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:10:15.033 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 13:10:15.033 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 13:10:15.034 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 0.9121ms
+2023-06-26 13:10:15.034 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:10:15.034 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 400 - application/problem+json;+charset=utf-8 2.6004ms
+2023-06-26 13:10:17.458 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:17.458 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5088ms
+2023-06-26 13:10:18.579 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:18.580 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:10:18.580 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 13:10:18.580 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 13:10:18.581 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 0.9889ms
+2023-06-26 13:10:18.581 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:10:18.581 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 400 - application/problem+json;+charset=utf-8 2.7085ms
+2023-06-26 13:10:19.613 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:19.614 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.8120ms
+2023-06-26 13:10:20.744 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:20.744 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5224ms
+2023-06-26 13:10:21.740 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:21.741 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5567ms
+2023-06-26 13:10:48.138 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:48.139 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:10:48.139 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 13:10:48.140 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 13:10:48.140 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 1.5112ms
+2023-06-26 13:10:48.140 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:10:48.141 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 400 - application/problem+json;+charset=utf-8 2.5805ms
+2023-06-26 13:10:50.176 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:50.177 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.9247ms
+2023-06-26 13:10:51.887 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:51.899 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 12.1854ms
+2023-06-26 13:10:53.053 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:53.054 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5265ms
+2023-06-26 13:10:54.212 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:54.212 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5107ms
+2023-06-26 13:10:55.217 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:55.218 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.6113ms
+2023-06-26 13:10:56.027 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:56.028 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 1.3986ms
+2023-06-26 13:10:57.790 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:10:57.791 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5418ms
+2023-06-26 13:11:13.885 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:11:13.886 +01:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 12:04:26 PM', Current time: '6/26/2023 12:11:13 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2023-06-26 13:11:13.886 +01:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/26/2023 12:04:26 PM', Current time: '6/26/2023 12:11:13 PM'.
+2023-06-26 13:11:13.886 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-26 13:11:13.886 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2023-06-26 13:11:13.887 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 1.9841ms
+2023-06-26 13:11:15.797 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:11:15.797 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5391ms
+2023-06-26 13:11:17.563 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:11:17.564 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.6706ms
+2023-06-26 13:11:18.727 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:11:18.727 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5295ms
+2023-06-26 13:11:19.794 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:11:19.795 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5652ms
+2023-06-26 13:11:20.776 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:11:20.777 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5818ms
+2023-06-26 13:39:32.278 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50
+2023-06-26 13:39:32.278 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 13:39:32.278 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 13:39:32.317 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 13:40:11.316 +01:00 [INF] Executed DbCommand (29ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 13:40:11.317 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 38999.7517ms.
+2023-06-26 13:40:11.317 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-26 13:40:11.318 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 39039.2785ms
+2023-06-26 13:40:11.318 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 13:40:11.318 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:44329/api/Authorize/GenerateToken application/json 50 - 200 - text/plain;+charset=utf-8 39040.4310ms
+2023-06-26 13:40:39.558 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:40:39.559 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:40:39.559 +01:00 [INF] Route matched with {action = "GetCustomerByCode", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerByCode(System.String) on controller Dotnet7API.Controllers.CustomerController (Dotnet7API).
+2023-06-26 13:40:39.560 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-06-26 13:40:39.561 +01:00 [INF] Executed action Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API) in 1.2149ms
+2023-06-26 13:40:39.561 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.CustomerController.GetCustomerByCode (Dotnet7API)'
+2023-06-26 13:40:39.561 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 400 - application/problem+json;+charset=utf-8 2.7414ms
+2023-06-26 13:40:45.418 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - -
+2023-06-26 13:40:45.418 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44329/api/Customer/GetCustomerByCode?=2 - - - 401 - - 0.5747ms
+2023-06-26 15:44:53.878 +01:00 [INF] User profile is available. Using 'C:\Users\USER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-26 15:44:55.417 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-26 15:44:55.420 +01:00 [INF] Hosting environment: Development
+2023-06-26 15:44:55.423 +01:00 [INF] Content root path: C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API
+2023-06-26 15:44:55.790 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2023-06-26 15:44:57.501 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - -
+2023-06-26 15:44:57.516 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - - - 200 11990 application/javascript;+charset=utf-8 7.7962ms
+2023-06-26 15:44:57.516 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 1686.2189ms
+2023-06-26 15:44:57.588 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_vs/browserLink - -
+2023-06-26 15:44:57.901 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 313.6155ms
+2023-06-26 15:44:58.120 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2023-06-26 15:44:58.526 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 405.9380ms
+2023-06-26 15:49:27.328 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47
+2023-06-26 15:49:27.434 +01:00 [INF] CORS policy execution successful.
+2023-06-26 15:49:27.906 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 15:49:28.062 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 15:49:29.439 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 15:49:33.313 +01:00 [INF] Executed DbCommand (203ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 15:49:33.924 +01:00 [INF] Executed DbCommand (39ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[UserId], [t].[RefreshToken], [t].[TokenId]
+FROM [tbl_RefreshToken] AS [t]
+WHERE [t].[UserId] = @__username_0
+2023-06-26 15:49:34.231 +01:00 [INF] Executed DbCommand (62ms) [Parameters=[@p0='?' (Size = 50), @p1='?' (Size = 4000), @p2='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [tbl_RefreshToken] ([UserId], [RefreshToken], [TokenId])
+VALUES (@p0, @p1, @p2);
+2023-06-26 15:49:34.264 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4778.9257ms.
+2023-06-26 15:49:34.280 +01:00 [INF] Executing OkObjectResult, writing value of type 'Dotnet7API.Modal.TokenResponse'.
+2023-06-26 15:49:34.303 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 6235.548ms
+2023-06-26 15:49:34.305 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 15:49:34.340 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47 - 200 - application/json;+charset=utf-8 7012.5149ms
+2023-06-26 16:41:28.128 +01:00 [INF] User profile is available. Using 'C:\Users\USER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-26 16:41:29.347 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-26 16:41:29.350 +01:00 [INF] Hosting environment: Development
+2023-06-26 16:41:29.352 +01:00 [INF] Content root path: C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API
+2023-06-26 16:41:29.533 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2023-06-26 16:41:31.081 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - -
+2023-06-26 16:41:31.142 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/_vs/browserLink - -
+2023-06-26 16:41:31.169 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_framework/aspnetcore-browser-refresh.js - - - 200 11990 application/javascript;+charset=utf-8 46.2394ms
+2023-06-26 16:41:31.170 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 1556.4994ms
+2023-06-26 16:41:31.436 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 293.9659ms
+2023-06-26 16:41:31.828 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2023-06-26 16:41:32.331 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 502.7371ms
+2023-06-26 16:42:32.566 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47
+2023-06-26 16:42:32.702 +01:00 [INF] CORS policy execution successful.
+2023-06-26 16:42:33.190 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 16:42:33.381 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 16:42:34.777 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 16:42:39.182 +01:00 [INF] Executed DbCommand (232ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 16:42:39.980 +01:00 [INF] Executed DbCommand (20ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[UserId], [t].[RefreshToken], [t].[TokenId]
+FROM [tbl_RefreshToken] AS [t]
+WHERE [t].[UserId] = @__username_0
+2023-06-26 16:42:40.491 +01:00 [INF] Executed DbCommand (272ms) [Parameters=[@p1='?' (Size = 50), @p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [tbl_RefreshToken] SET [RefreshToken] = @p0
+OUTPUT 1
+WHERE [UserId] = @p1;
+2023-06-26 16:42:40.536 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5720.0388ms.
+2023-06-26 16:42:40.565 +01:00 [INF] Executing OkObjectResult, writing value of type 'Dotnet7API.Modal.TokenResponse'.
+2023-06-26 16:42:40.600 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 7208.1679ms
+2023-06-26 16:42:40.601 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 16:42:40.619 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47 - 200 - application/json;+charset=utf-8 8052.9511ms
+2023-06-26 16:51:07.613 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateRefreshToken application/json 283
+2023-06-26 16:51:07.621 +01:00 [INF] CORS policy execution successful.
+2023-06-26 16:51:07.623 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API)'
+2023-06-26 16:51:07.635 +01:00 [INF] Route matched with {action = "GenerateRefreshToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateRefreshToken(Dotnet7API.Modal.TokenResponse) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 16:51:07.858 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 16:51:08.411 +01:00 [INF] Executed DbCommand (425ms) [Parameters=[@__token_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[UserId], [t].[RefreshToken], [t].[TokenId]
+FROM [tbl_RefreshToken] AS [t]
+WHERE [t].[RefreshToken] = @__token_RefreshToken_0
+2023-06-26 16:51:08.638 +01:00 [INF] Executed DbCommand (63ms) [Parameters=[@__username_0='?' (Size = 50), @__8__locals1_token_RefreshToken_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[UserId], [t].[RefreshToken], [t].[TokenId]
+FROM [tbl_RefreshToken] AS [t]
+WHERE [t].[UserId] = @__username_0 AND [t].[RefreshToken] = @__8__locals1_token_RefreshToken_1
+2023-06-26 16:51:09.235 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Dotnet7API.Repos.LearndataContextb'.
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2023-06-26 16:51:09.880 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API) in 2245.0944ms
+2023-06-26 16:51:09.906 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API)'
+2023-06-26 16:51:10.045 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.)
+ ---> System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Dotnet7API.Container.RefreshHandler.GenerateToken(String username) in C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API\Container\RefreshHandler.cs:line 24
+   at Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken(TokenResponse token) in C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API\Controllers\AuthorizeController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-06-26 16:51:10.147 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateRefreshToken application/json 283 - 500 - text/plain;+charset=utf-8 2534.0132ms
+2023-06-26 16:51:50.972 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateRefreshToken application/json 283
+2023-06-26 16:51:50.985 +01:00 [INF] CORS policy execution successful.
+2023-06-26 16:51:50.987 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API)'
+2023-06-26 16:51:50.987 +01:00 [INF] Route matched with {action = "GenerateRefreshToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateRefreshToken(Dotnet7API.Modal.TokenResponse) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 16:51:51.021 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 16:51:51.150 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__token_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[UserId], [t].[RefreshToken], [t].[TokenId]
+FROM [tbl_RefreshToken] AS [t]
+WHERE [t].[RefreshToken] = @__token_RefreshToken_0
+2023-06-26 16:51:51.165 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__username_0='?' (Size = 50), @__8__locals1_token_RefreshToken_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[UserId], [t].[RefreshToken], [t].[TokenId]
+FROM [tbl_RefreshToken] AS [t]
+WHERE [t].[UserId] = @__username_0 AND [t].[RefreshToken] = @__8__locals1_token_RefreshToken_1
+2023-06-26 16:51:51.165 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Dotnet7API.Repos.LearndataContextb'.
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2023-06-26 16:51:51.308 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API) in 320.3073ms
+2023-06-26 16:51:51.308 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API)'
+2023-06-26 16:51:51.323 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.)
+ ---> System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Dotnet7API.Container.RefreshHandler.GenerateToken(String username) in C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API\Container\RefreshHandler.cs:line 24
+   at Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken(TokenResponse token) in C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API\Controllers\AuthorizeController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-06-26 16:51:51.330 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateRefreshToken application/json 283 - 500 - text/plain;+charset=utf-8 357.4080ms
+2023-06-26 16:52:16.635 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateRefreshToken application/json 283
+2023-06-26 16:52:16.635 +01:00 [INF] CORS policy execution successful.
+2023-06-26 16:52:16.635 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API)'
+2023-06-26 16:52:16.636 +01:00 [INF] Route matched with {action = "GenerateRefreshToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateRefreshToken(Dotnet7API.Modal.TokenResponse) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 16:52:16.662 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 16:52:16.692 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@__token_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[UserId], [t].[RefreshToken], [t].[TokenId]
+FROM [tbl_RefreshToken] AS [t]
+WHERE [t].[RefreshToken] = @__token_RefreshToken_0
+2023-06-26 16:52:16.711 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Dotnet7API.Repos.LearndataContextb'.
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2023-06-26 16:52:16.714 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__username_0='?' (Size = 50), @__8__locals1_token_RefreshToken_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[UserId], [t].[RefreshToken], [t].[TokenId]
+FROM [tbl_RefreshToken] AS [t]
+WHERE [t].[UserId] = @__username_0 AND [t].[RefreshToken] = @__8__locals1_token_RefreshToken_1
+2023-06-26 16:52:16.884 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API) in 248.3591ms
+2023-06-26 16:52:16.885 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API)'
+2023-06-26 16:52:16.899 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.)
+ ---> System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Dotnet7API.Container.RefreshHandler.GenerateToken(String username) in C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API\Container\RefreshHandler.cs:line 24
+   at Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken(TokenResponse token) in C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API\Controllers\AuthorizeController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-06-26 16:52:16.903 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateRefreshToken application/json 283 - 500 - text/plain;+charset=utf-8 267.5634ms
+2023-06-26 16:54:31.845 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47
+2023-06-26 16:54:31.849 +01:00 [INF] CORS policy execution successful.
+2023-06-26 16:54:31.849 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 16:54:31.849 +01:00 [INF] Route matched with {action = "GenerateToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateToken(Dotnet7API.Modal.UserCredentials) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 16:54:31.878 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 16:54:31.887 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userCredentials_Username_0='?' (Size = 50), @__userCredentials_Password_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Code], [t].[Email], [t].[Isactive], [t].[Name], [t].[Password], [t].[Phone], [t].[Role]
+FROM [tbl_User] AS [t]
+WHERE [t].[Code] = @__userCredentials_Username_0 AND [t].[Password] = @__userCredentials_Password_1
+2023-06-26 16:54:31.902 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__username_0='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[UserId], [t].[RefreshToken], [t].[TokenId]
+FROM [tbl_RefreshToken] AS [t]
+WHERE [t].[UserId] = @__username_0
+2023-06-26 16:54:31.951 +01:00 [INF] Executed DbCommand (40ms) [Parameters=[@p1='?' (Size = 50), @p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [tbl_RefreshToken] SET [RefreshToken] = @p0
+OUTPUT 1
+WHERE [UserId] = @p1;
+2023-06-26 16:54:31.952 +01:00 [INF] Executed action method Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 74.2069ms.
+2023-06-26 16:54:31.954 +01:00 [INF] Executing OkObjectResult, writing value of type 'Dotnet7API.Modal.TokenResponse'.
+2023-06-26 16:54:31.955 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API) in 105.3798ms
+2023-06-26 16:54:31.955 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateToken (Dotnet7API)'
+2023-06-26 16:54:31.955 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateToken application/json 47 - 200 - application/json;+charset=utf-8 109.7270ms
+2023-06-26 16:55:18.381 +01:00 [INF] Request starting HTTP/2 POST https://localhost:44329/api/Authorize/GenerateRefreshToken application/json 283
+2023-06-26 16:55:18.381 +01:00 [INF] CORS policy execution successful.
+2023-06-26 16:55:18.381 +01:00 [INF] Executing endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API)'
+2023-06-26 16:55:18.381 +01:00 [INF] Route matched with {action = "GenerateRefreshToken", controller = "Authorize"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateRefreshToken(Dotnet7API.Modal.TokenResponse) on controller Dotnet7API.Controllers.AuthorizeController (Dotnet7API).
+2023-06-26 16:55:18.430 +01:00 [INF] Executing action method Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API) - Validation state: "Valid"
+2023-06-26 16:55:18.438 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__token_RefreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[UserId], [t].[RefreshToken], [t].[TokenId]
+FROM [tbl_RefreshToken] AS [t]
+WHERE [t].[RefreshToken] = @__token_RefreshToken_0
+2023-06-26 16:55:18.452 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'Dotnet7API.Repos.LearndataContextb'.
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2023-06-26 16:55:18.456 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[@__username_0='?' (Size = 50), @__8__locals1_token_RefreshToken_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[UserId], [t].[RefreshToken], [t].[TokenId]
+FROM [tbl_RefreshToken] AS [t]
+WHERE [t].[UserId] = @__username_0 AND [t].[RefreshToken] = @__8__locals1_token_RefreshToken_1
+2023-06-26 16:55:18.634 +01:00 [INF] Executed action Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API) in 252.9331ms
+2023-06-26 16:55:18.635 +01:00 [INF] Executed endpoint 'Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken (Dotnet7API)'
+2023-06-26 16:55:18.652 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.)
+ ---> System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Dotnet7API.Container.RefreshHandler.GenerateToken(String username) in C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API\Container\RefreshHandler.cs:line 24
+   at Dotnet7API.Controllers.AuthorizeController.GenerateRefreshToken(TokenResponse token) in C:\Users\USER\Desktop\FreeCodeCamp\Dotnet 6\Dotnet7API\Controllers\AuthorizeController.cs:line 99
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-06-26 16:55:18.657 +01:00 [INF] Request finished HTTP/2 POST https://localhost:44329/api/Authorize/GenerateRefreshToken application/json 283 - 500 - text/plain;+charset=utf-8 276.7588ms

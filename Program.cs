@@ -1,12 +1,16 @@
 using AutoMapper;
 using Dotnet7API.Container;
 using Dotnet7API.Helper;
+using Dotnet7API.Modal;
 using Dotnet7API.Repos;
 using Dotnet7API.Service;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,11 +21,36 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICustomerService, CustomerService>();
+builder.Services.AddTransient<IRefreshHandler, RefreshHandler>();
 builder.Services.AddDbContext<LearndataContextb>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("apicon")));
 
 
-//Registering the Authentication Handler
-builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+//Registering the Authentication Handler for Basic Authentication
+//builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
+
+//Registering the Authentication Handler for JWT Authentication
+var authKey = builder.Configuration.GetValue<string>("JwtSettings:SecurityKey");
+
+builder.Services.AddAuthentication(item =>
+{
+    item.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    item.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(item =>
+{
+item.RequireHttpsMetadata = true;
+item.SaveToken = true;
+    item.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authKey)),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ClockSkew = TimeSpan.Zero
+    };
+});
+
+
 
 var automapper = new MapperConfiguration(item => item.AddProfile(new AutoMapperHandler()));
 IMapper mapper = automapper.CreateMapper();
@@ -52,6 +81,10 @@ var logger = new LoggerConfiguration()
     .WriteTo.File(logpath)
     .CreateLogger();
 builder.Logging.AddSerilog(logger);
+
+//JWT configuration
+var jwtsetting = builder.Configuration.GetSection("JwtSettings");
+builder.Services.Configure<JwtSettings>(jwtsetting);
 
 
 
