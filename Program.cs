@@ -90,7 +90,11 @@ builder.Services.Configure<JwtSettings>(jwtsetting);
 
 var app = builder.Build();
 
-//calling the RateLimiter
+//configuring minimal Api
+app.MapGet("/minimalapi", () => "Michael Sogunro");
+app.MapGet("/getchannel", (string channelname) => "Welcome to" + channelname)
+
+//configuring the RateLimiter
 app.UseRateLimiter();
 
 // Configure the HTTP request pipeline.
