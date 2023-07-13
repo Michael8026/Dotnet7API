@@ -18,11 +18,13 @@ public partial class LearndataContextb : DbContext
 
     public virtual DbSet<TblCustomer> TblCustomers { get; set; }
 
+    public virtual DbSet<TblProduct> TblProducts { get; set; }
+
+    public virtual DbSet<TblProductImage> TblProductImages { get; set; }
+
     public virtual DbSet<TblRefreshToken> TblRefreshTokens { get; set; }
 
     public virtual DbSet<TblUser> TblUsers { get; set; }
-
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

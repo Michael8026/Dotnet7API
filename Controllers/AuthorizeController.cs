@@ -84,7 +84,7 @@ namespace Dotnet7API.Controllers
                 var newToken = securityToken as JwtSecurityToken;
                 if (newToken != null && newToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256))
                 {
-                    string username = principal.Identity.Name;
+                    string username = principal.Identity?.Name;
                     var existdata = _context.TblRefreshTokens.FirstOrDefaultAsync(item => item.UserId == username && item.RefreshToken == token.RefreshToken);
                     if (existdata != null)
                     {

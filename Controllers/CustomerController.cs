@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.RateLimiting;
 
 namespace Dotnet7API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [EnableRateLimiting("fixed window")]
     [Route("api/[controller]")]
     [ApiController]
@@ -19,7 +19,7 @@ namespace Dotnet7API.Controllers
             _service = service;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAllCustomers()
         {

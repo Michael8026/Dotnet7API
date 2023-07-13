@@ -38,8 +38,8 @@ builder.Services.AddAuthentication(item =>
     item.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(item =>
 {
-item.RequireHttpsMetadata = true;
-item.SaveToken = true;
+    item.RequireHttpsMetadata = true;
+    item.SaveToken = true;
     item.TokenValidationParameters = new TokenValidationParameters()
     {
         ValidateIssuerSigningKey = true,
@@ -99,6 +99,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+//for enabling the image upload getter
+app.UseStaticFiles();
 
 app.UseCors();
 
